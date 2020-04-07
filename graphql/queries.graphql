@@ -1,0 +1,14 @@
+"""
+Queries used in the application.
+Author: Andrew Jarombek
+Date: 4/7/2020
+"""
+
+query UserInfo {
+    user(login: "AJarombek") {
+        login
+        name
+        location
+        websiteUrl
+    }
+}
