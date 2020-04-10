@@ -5,8 +5,12 @@
  */
 
 const path = require('path');
+const dotenv = require('dotenv');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+
+const env = dotenv.config().parsed;
 
 module.exports = {
   entry: {
@@ -64,6 +68,9 @@ module.exports = {
       template: './src/index.html',
       filename: 'index.html'
     }),
+    new webpack.DefinePlugin({
+      'process.env.GITHUB_ACCESS_TOKEN': JSON.stringify(env.GITHUB_ACCESS_TOKEN)
+    })
   ],
   devServer: {
     historyApiFallback: true

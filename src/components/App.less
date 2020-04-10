@@ -1,10 +1,10 @@
 /**
- * Stylesheet for my App component.
+ * Stylesheet for the App component.
  * Author: Andrew Jarombek
  * Date: 4/9/2020
  */
 
-@import "vars";
+@import "../vars";
 
 .app {
   .header {
@@ -13,5 +13,13 @@
     font-family: 'Dyslexie', Helvetica, sans-serif;
     font-size: 12px;
     color: @defaultFontColor;
+
+    p {
+      margin: 0 4px;
+    }
+
+    p:nth-child(5) {
+      color: darken(@defaultFontColor, 20%);
+    }
   }
 }

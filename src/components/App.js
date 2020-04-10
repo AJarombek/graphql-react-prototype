@@ -6,18 +6,14 @@
 
 import { hot } from 'react-hot-loader/root';
 import React from 'react';
+import DashboardHeader from './DashboardHeader';
+import DashboardItems from './DashboardItems';
 
 const App = () => {
   return (
     <div className="app">
-      <div className="header">
-        <p>GraphQL React Prototype</p>
-        <p>/</p>
-        <p>GitHub</p>
-        <p>/</p>
-        <p>AJarombek</p>
-      </div>
-
+      <DashboardHeader />
+      <DashboardItems />
     </div>
   );
 };
