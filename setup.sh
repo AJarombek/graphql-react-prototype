@@ -7,3 +7,6 @@
 
 npm init
 npm install
+
+# Start the development server with hot reloading.
+npm start

@@ -11,7 +11,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     app: path.join(__dirname, 'src/index.js'),
-    styles: path.join(__dirname, 'src/index.css')
+    styles: path.join(__dirname, 'src/index.less')
   },
   module: {
     rules: [
