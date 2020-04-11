@@ -6,9 +6,30 @@
 
 import axios from 'axios';
 
-axios.create({
+const instance = axios.create({
   baseURL: 'https://api.github.com/graphql',
   headers: {
     Authorization: `bearer ${process.env.GITHUB_ACCESS_TOKEN}`
   }
 });
+
+const getUserInfoQuery = `
+  query UserInfo($username: String!) {
+    user(login: $username) {
+      login
+      name 
+      location
+      websiteUrl
+      avatarUrl
+    }
+  }
+`;
+
+const getUserInfo = (username) => {
+  return instance.post('', {
+    query: getUserInfoQuery,
+    variables: { username }
+  })
+};
+
+export { getUserInfo };

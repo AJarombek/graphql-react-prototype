@@ -4,11 +4,12 @@ Author: Andrew Jarombek
 Date: 4/7/2020
 """
 
-query UserInfo {
-    user(login: "AJarombek") {
+query UserInfo($username: String!) {
+    user(login: $username) {
         login
         name
         location
         websiteUrl
+        avatarUrl
     }
 }
