@@ -4,6 +4,56 @@
  * Date: 4/11/2020
  */
 
-.user-info {
+@import "../../vars";
 
+.user-info {
+  display: grid;
+  grid-template-columns: 100px 300px;
+  grid-template-areas:
+    "logo name    "
+    "logo location"
+    "logo website ";
+
+  background-color: @darkerTheme;
+  border-radius: 3px;
+  padding: 20px;
+
+  height: 100px;
+  width: 400px;
+
+  figure {
+    grid-area: logo;
+    height: 100px;
+    width: 100px;
+    margin: 0;
+
+    img {
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  h2, p, a {
+    margin: 0 0 0 10px;
+  }
+
+  h2, p {
+    color: @defaultFontColor;
+  }
+
+  h2 {
+    grid-area: name;
+    font-family: 'Dyslexie', Helvetica, sans-serif;
+    font-size: 16px;
+  }
+
+  p {
+    grid-area: location;
+    font-family: 'Sylexiad-Bold', Helvetica, sans-serif;
+  }
+
+  a {
+    grid-area: website;
+  }
 }

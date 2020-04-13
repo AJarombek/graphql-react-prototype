@@ -22,7 +22,7 @@ const UserInfo = () => {
             <figure>
                 <img src={user.avatarUrl} alt="" />
             </figure>
-            <p>{user.name}</p>
+            <h2>{user.name}</h2>
             <p>{user.location}</p>
             <a href={`https:\\\\${user.websiteUrl}`}>Personal Website</a>
         </div>
