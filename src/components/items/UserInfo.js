@@ -18,7 +18,7 @@ const UserInfo = () => {
     });
 
     return (
-        <div className="user-info">
+        <div className="items user-info">
             <figure>
                 <img src={user.avatarUrl} alt="" />
             </figure>
