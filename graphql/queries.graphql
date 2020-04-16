@@ -33,7 +33,7 @@ query PersonalRepositories($username: String!) {
 }
 
 # Get the most used language in each repository.  Used to compute the most popular language.
-query RepositoryPrimaryLanguages($username: String!) {
+query TopLanguage($username: String!) {
     user(login: $username) {
         name
         repositories(isFork: false, isLocked: false, privacy: PUBLIC, affiliations: OWNER,

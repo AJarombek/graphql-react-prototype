@@ -5,28 +5,40 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import { getUserInfo } from "../../datasource/GraphQL";
+import { getUserInfo } from '../../datasource/GraphQL';
 
 const UserInfo = () => {
-    const [user, setUser] = useState({});
+  const [user, setUser] = useState({});
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        getUserInfo('AJarombek')
-            .then(result => {
-                setUser(result.data.data.user);
-            })
-    });
+  useEffect(() => {
+    getUserInfo('AJarombek')
+      .then(result => {
+        if (result.data.data) {
+          setUser(result.data.data.user);
+          setError(null);
+        } else {
+          setError(result.data.errors[0].message);
+        }
+      })
+  });
 
-    return (
-        <div className="items user-info">
-            <figure>
-                <img src={user.avatarUrl} alt="" />
-            </figure>
-            <h2>{user.name}</h2>
-            <p>{user.location}</p>
-            <a href={`https:\\\\${user.websiteUrl}`}>Personal Website</a>
-        </div>
-    );
+  return (
+    <div className="items user-info">
+      { error ?
+        <p>{error}</p>
+        :
+        <>
+          <figure>
+            <img src={user.avatarUrl} alt=""/>
+          </figure>
+          <h2>{user.name}</h2>
+          <p>{user.location}</p>
+          <a href={`https:\\\\${user.websiteUrl}`}>Personal Website</a>
+        </>
+      }
+    </div>
+  );
 };
 
 export default UserInfo;

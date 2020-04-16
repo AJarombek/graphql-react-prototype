@@ -6,11 +6,15 @@
 
 import React from 'react';
 import UserInfo from "./items/UserInfo";
+import TopLanguage from './items/TopLanguage';
+import RepositoryCount from './items/RepositoryCount';
 
 const DashboardItems = () => {
   return (
     <div className="dashboard-items">
       <UserInfo />
+      <TopLanguage />
+      <RepositoryCount />
     </div>
   );
 };

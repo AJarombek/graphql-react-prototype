@@ -29,7 +29,49 @@ const getUserInfo = (username) => {
   return instance.post('', {
     query: getUserInfoQuery,
     variables: { username }
-  })
+  });
 };
 
-export { getUserInfo };
+const getPersonalRepositoriesQuery = `
+  query PersonalRepositories($username: String!) {
+    user(login: $username) {
+      repositories(isFork: false, isLocked: false, privacy: PUBLIC, affiliations: OWNER,
+                  ownerAffiliations:OWNER, first: 100) {
+        totalCount
+      }
+    }
+  }
+`;
+
+const getPersonalRepositories = (username) => {
+  return instance.post('', {
+    query: getPersonalRepositoriesQuery,
+    variables: { username }
+  });
+};
+
+const getTopLanguageQuery = `
+  query TopLanguage($username: String!) {
+    user(login: $username) {
+      repositories(isFork: false, isLocked: false, privacy: PUBLIC, affiliations: OWNER,
+                ownerAffiliations:OWNER, first: 100) {
+        edges {
+          node {
+            primaryLanguage {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const getTopLanguage = (username) => {
+    return instance.post('', {
+        query: getTopLanguageQuery,
+        variables: { username }
+    });
+};
+
+export { getUserInfo, getPersonalRepositories, getTopLanguage };
