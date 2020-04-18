@@ -20,13 +20,15 @@ const UserInfo = () => {
         } else {
           setError(result.data.errors[0].message);
         }
-      })
+      });
   });
 
   return (
     <div className="items user-info">
-      { error ?
-        <p>{error}</p>
+      {error ?
+        <div className="error">
+          <h6>{error}</h6>
+        </div>
         :
         <>
           <figure>

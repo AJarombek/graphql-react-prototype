@@ -4,6 +4,22 @@
  * Date: 4/15/2020
  */
 
-.items {
+@import "../../vars";
 
+.items {
+  background-color: @darkerTheme;
+  border-radius: 3px;
+  padding: 20px;
+
+  .error {
+    display: flex;
+
+    h6 {
+      margin: auto;
+      color: @defaultFontColor;
+      font-family: 'Dyslexie', Helvetica, sans-serif;
+      font-size: 14px;
+      text-align: center;
+    }
+  }
 }
