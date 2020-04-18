@@ -34,7 +34,7 @@ const UserInfo = () => {
           <figure>
             <img src={user.avatarUrl} alt=""/>
           </figure>
-          <h2>{user.name}</h2>
+          <h3>{user.name}</h3>
           <p>{user.location}</p>
           <a href={`https:\\\\${user.websiteUrl}`}>Personal Website</a>
         </>
