@@ -13,6 +13,10 @@ const instance = axios.create({
   }
 });
 
+const request = (query, variables) => {
+  return instance.post('', { query, variables });
+};
+
 const getUserInfoQuery = `
   query UserInfo($username: String!) {
     user(login: $username) {
@@ -26,10 +30,7 @@ const getUserInfoQuery = `
 `;
 
 const getUserInfo = (username) => {
-  return instance.post('', {
-    query: getUserInfoQuery,
-    variables: { username }
-  });
+  return request(getUserInfoQuery, { username });
 };
 
 const getPersonalRepositoriesQuery = `
@@ -44,10 +45,7 @@ const getPersonalRepositoriesQuery = `
 `;
 
 const getPersonalRepositories = (username) => {
-  return instance.post('', {
-    query: getPersonalRepositoriesQuery,
-    variables: { username }
-  });
+  return request(getPersonalRepositoriesQuery, { username });
 };
 
 const getTopLanguageQuery = `
@@ -68,10 +66,65 @@ const getTopLanguageQuery = `
 `;
 
 const getTopLanguage = (username) => {
-    return instance.post('', {
-        query: getTopLanguageQuery,
-        variables: { username }
-    });
+  return request(getTopLanguageQuery, { username });
 };
 
-export { getUserInfo, getPersonalRepositories, getTopLanguage };
+const getTotalCommitsQuery = `
+  query TotalCommits($username: String!) {
+    user(login: $username) {
+      repositories(privacy: PUBLIC, affiliations: OWNER, ownerAffiliations:OWNER, first: 100) {
+        edges {
+          node {
+            name
+            ref(qualifiedName: "master") {
+              target {
+                ... on Commit {
+                  history(first: 1) {
+                    totalCount
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const getTotalCommits = (username) => {
+  return request(getTotalCommitsQuery, { username });
+};
+
+const getMostRecentCommitQuery = `
+  query MostRecentCommit($username: String!) {
+    user(login: $username) {
+      repositories(privacy: PUBLIC, affiliations: OWNER, ownerAffiliations:OWNER, first: 100) {
+        edges {
+          node {
+            name
+            ref(qualifiedName: "master") {
+              target {
+                ... on Commit {
+                  pushedDate
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const getMostRecentCommit = (username) => {
+  return request(getMostRecentCommitQuery, { username });
+};
+
+export {
+  getUserInfo,
+  getPersonalRepositories,
+  getTopLanguage,
+  getTotalCommits,
+  getMostRecentCommit
+};

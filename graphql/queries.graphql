@@ -48,3 +48,45 @@ query TopLanguage($username: String!) {
         }
     }
 }
+
+# Get the total commits for each repository.
+query TotalCommits($username: String!) {
+    user(login: $username) {
+        repositories(privacy: PUBLIC, affiliations: OWNER, ownerAffiliations:OWNER, first: 100) {
+            edges {
+                node {
+                    name
+                    ref(qualifiedName: "master") {
+                        target {
+                            ... on Commit {
+                                history(first: 1) {
+                                    totalCount
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+# Get the most recent commit in each repository.
+query MostRecentCommit($username: String!) {
+    user(login: $username) {
+        repositories(privacy: PUBLIC, affiliations: OWNER, ownerAffiliations:OWNER, first: 100) {
+            edges {
+                node {
+                    name
+                    ref(qualifiedName: "master") {
+                        target {
+                            ... on Commit {
+                                pushedDate
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
