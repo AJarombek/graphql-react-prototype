@@ -69,6 +69,36 @@ const getTopLanguage = (username) => {
   return request(getTopLanguageQuery, { username });
 };
 
+const getRecentTopLanguagesQuery = `
+  query RecentTopLanguages($username: String!) {
+    user(login: $username) {
+      repositories(
+        isFork: false,
+        isLocked: false,
+        privacy: PUBLIC,
+        affiliations: OWNER,
+        ownerAffiliations: OWNER,
+        orderBy: {field: CREATED_AT, direction: DESC},
+        first: 100
+      ) {
+        edges {
+          node {
+            name
+            createdAt
+            primaryLanguage {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const getRecentTopLanguages = (username) => {
+  return request(getRecentTopLanguagesQuery, { username });
+};
+
 const getTotalCommitsQuery = `
   query TotalCommits($username: String!) {
     user(login: $username) {
@@ -121,10 +151,33 @@ const getMostRecentCommit = (username) => {
   return request(getMostRecentCommitQuery, { username });
 };
 
+const getWeeklyContributionCountsQuery = `
+  query WeeklyContributionCounts($username: String!) {
+    user(login: $username) {
+      contributionsCollection {
+        contributionCalendar {
+          weeks {
+            firstDay
+            contributionDays {
+              contributionCount
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+const getWeeklyContributionCounts = (username) => {
+  return request(getWeeklyContributionCountsQuery, { username });
+};
+
 export {
   getUserInfo,
   getPersonalRepositories,
   getTopLanguage,
+  getRecentTopLanguages,
   getTotalCommits,
-  getMostRecentCommit
+  getMostRecentCommit,
+  getWeeklyContributionCounts
 };

@@ -90,3 +90,45 @@ query MostRecentCommit($username: String!) {
         }
     }
 }
+
+# Weekly contribution counts to find the most productive weeks.
+query WeeklyContributionCounts($username: String!) {
+    user(login: $username) {
+        contributionsCollection {
+            contributionCalendar {
+                weeks {
+                    firstDay
+                    contributionDays {
+                        contributionCount
+                    }
+                }
+            }
+        }
+    }
+}
+
+# Get repositories ordered by most recently created.  The result is used to compute which languages
+# are used most in recently created repositories.
+query RecentTopLanguages($username: String!) {
+    user(login: $username) {
+        repositories(
+            isFork: false,
+            isLocked: false,
+            privacy: PUBLIC,
+            affiliations: OWNER,
+            ownerAffiliations: OWNER,
+            orderBy: {field: CREATED_AT, direction: DESC},
+            first: 100
+        ) {
+            edges {
+                node {
+                    name
+                    createdAt
+                    primaryLanguage {
+                        name
+                    }
+                }
+            }
+        }
+    }
+}
