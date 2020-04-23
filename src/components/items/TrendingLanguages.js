@@ -16,28 +16,64 @@ const TrendingLanguages = () => {
     getRecentTopLanguages('AJarombek')
       .then(result => {
         if (result.data.data) {
-          console.info(result.data.data.user);
           generateTrendingLanguages(result.data.data.user.repositories.edges);
-          setError(null);
         } else {
           setError(result.data.errors[0].message);
         }
       });
-  });
+  }, []);
 
   const generateTrendingLanguages = (repositories) => {
     const languages = {};
 
     for (let repo of repositories) {
       const creationDate = repo.node.createdAt;
+
+      if (moment(creationDate) >= moment("2019-01-01")) {
+        const language = repo.node.primaryLanguage.name;
+
+        if (languages.hasOwnProperty(language)) {
+          languages[language] = languages[language] + 1;
+        } else {
+          languages[language] = 1;
+        }
+      } else {
+        break;
+      }
     }
 
-    setTrendingLanguages()
+    const sortedLanguages = [];
+    for (const language in languages) {
+      sortedLanguages.push({
+        name: language,
+        occurrences: languages[language]
+      });
+    }
+
+    sortedLanguages.sort((a, b) => b.occurrences - a.occurrences);
+
+    setTrendingLanguages(sortedLanguages.slice(0, 5));
+    setError(null);
   };
 
   return (
     <div className="items trending-languages">
-
+      {error ?
+        <div className="error">
+          <h6>{error}</h6>
+        </div>
+        :
+        <>
+          <h2>Trending Languages</h2>
+          { trendingLanguages.map(language =>
+            <>
+              <p>{language.name}</p>
+              <p>{language.occurrences}</p>
+            </>
+          )
+          }
+        </>
+      }
     </div>
   );
 };

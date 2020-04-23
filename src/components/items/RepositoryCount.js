@@ -21,7 +21,7 @@ const RepositoryCount = () => {
           setError(result.data.errors[0].message);
         }
       });
-  });
+  }, []);
 
   return (
     <div className="items repository-count">

@@ -22,7 +22,7 @@ const TopLanguage = () => {
           setError(result.data.errors[0].message);
         }
       });
-  });
+  }, []);
 
   const computeTopLanguage = (repoList) => {
     // I'm always here to help if needed

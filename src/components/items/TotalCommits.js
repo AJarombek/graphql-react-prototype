@@ -8,9 +8,53 @@ import React, { useEffect, useState } from 'react';
 import { getTotalCommits } from '../../datasource/GraphQL';
 
 const TotalCommits = () => {
+  const [repoCommits, setRepoCommits] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getTotalCommits('AJarombek')
+      .then(result => {
+        if (result.data.data) {
+          generateMostTotalCommits(result.data.data.user.repositories.edges);
+          setError(null);
+        } else {
+          setError(result.data.errors[0].message);
+        }
+      });
+  }, []);
+
+  const generateMostTotalCommits = (repositories) => {
+
+    const repositoriesByCommits = [];
+    for (const repository of repositories) {
+      repositoriesByCommits.push({
+        name: repository.node.name,
+        commits: repository.node.ref.target.history.totalCount
+      })
+    }
+
+    repositoriesByCommits.sort((a, b) => b.commits - a.commits);
+    setRepoCommits(repositoriesByCommits.slice(0, 5))
+  };
+
   return (
     <div className="items total-commits">
-
+      {error ?
+        <div className="error">
+          <h6>{error}</h6>
+        </div>
+        :
+        <>
+          <h2>Most Total Commits</h2>
+          { repoCommits.map(repository =>
+            <>
+              <p>{repository.name}</p>
+              <p>{repository.commits}</p>
+            </>
+          )
+          }
+        </>
+      }
     </div>
   );
 };

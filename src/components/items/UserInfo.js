@@ -21,7 +21,7 @@ const UserInfo = () => {
           setError(result.data.errors[0].message);
         }
       });
-  });
+  }, []);
 
   return (
     <div className="items user-info">
