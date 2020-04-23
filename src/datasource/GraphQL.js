@@ -129,7 +129,13 @@ const getTotalCommits = (username) => {
 const getMostRecentCommitQuery = `
   query MostRecentCommit($username: String!) {
     user(login: $username) {
-      repositories(privacy: PUBLIC, affiliations: OWNER, ownerAffiliations:OWNER, first: 100) {
+      repositories(
+        privacy: PUBLIC, 
+        affiliations: OWNER, 
+        ownerAffiliations:OWNER, 
+        first: 5, 
+        orderBy: {field: PUSHED_AT, direction: DESC}
+      ) {
         edges {
           node {
             name

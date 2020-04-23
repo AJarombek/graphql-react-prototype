@@ -16,7 +16,6 @@ const TotalCommits = () => {
       .then(result => {
         if (result.data.data) {
           generateMostTotalCommits(result.data.data.user.repositories.edges);
-          setError(null);
         } else {
           setError(result.data.errors[0].message);
         }
@@ -34,7 +33,9 @@ const TotalCommits = () => {
     }
 
     repositoriesByCommits.sort((a, b) => b.commits - a.commits);
-    setRepoCommits(repositoriesByCommits.slice(0, 5))
+
+    setRepoCommits(repositoriesByCommits.slice(0, 5));
+    setError(null);
   };
 
   return (
