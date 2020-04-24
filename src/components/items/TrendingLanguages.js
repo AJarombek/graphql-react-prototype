@@ -5,8 +5,8 @@
  */
 
 import React, { useEffect, useState } from 'react';
-import moment from 'moment';
 import { getRecentTopLanguages } from '../../datasource/GraphQL';
+import { getLanguagesSortedByOccurrence } from './githubUtils';
 
 const TrendingLanguages = () => {
   const [trendingLanguages, setTrendingLanguages] = useState([]);
@@ -24,33 +24,7 @@ const TrendingLanguages = () => {
   }, []);
 
   const generateTrendingLanguages = (repositories) => {
-    const languages = {};
-
-    for (let repo of repositories) {
-      const creationDate = repo.node.createdAt;
-
-      if (moment(creationDate) >= moment("2019-01-01")) {
-        const language = repo.node.primaryLanguage.name;
-
-        if (languages.hasOwnProperty(language)) {
-          languages[language] = languages[language] + 1;
-        } else {
-          languages[language] = 1;
-        }
-      } else {
-        break;
-      }
-    }
-
-    const sortedLanguages = [];
-    for (const language in languages) {
-      sortedLanguages.push({
-        name: language,
-        occurrences: languages[language]
-      });
-    }
-
-    sortedLanguages.sort((a, b) => b.occurrences - a.occurrences);
+    const sortedLanguages = getLanguagesSortedByOccurrence(repositories, true);
 
     setTrendingLanguages(sortedLanguages.slice(0, 5));
     setError(null);
