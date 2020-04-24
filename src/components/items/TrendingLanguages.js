@@ -40,10 +40,10 @@ const TrendingLanguages = () => {
         <>
           <h2>Trending Languages</h2>
           { trendingLanguages.map(language =>
-            <>
+            <div key={language.name}>
               <p>{language.name}</p>
               <p>{language.occurrences}</p>
-            </>
+            </div>
           )
           }
         </>
