@@ -13,14 +13,17 @@ const MostPopularLanguages = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getTopLanguage('AJarombek')
-      .then(result => {
-        if (result.data.data) {
-          generateTopLanguages(result.data.data.user.repositories.edges);
-        } else {
-          setError(result.data.errors[0].message);
-        }
-      });
+    async function getGraphQLResult() {
+      const result = await getTopLanguage('AJarombek');
+
+      if (result.data.data) {
+        generateTopLanguages(result.data.data.user.repositories.edges);
+      } else {
+        setError(result.data.errors[0].message);
+      }
+    }
+
+    getGraphQLResult();
   }, []);
 
   const generateTopLanguages = (repositories) => {

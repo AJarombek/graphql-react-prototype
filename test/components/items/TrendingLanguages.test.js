@@ -1,21 +1,27 @@
 /**
  * Unit tests with Jest and Enzyme for the TrendingLanguages component.
  * @author Andrew Jarombek
- * @since 4/18/2020
+ * @since 4/25/2020
  */
 
 import React from 'react';
 import { mount } from 'enzyme';
 import TrendingLanguages from '../../../src/components/items/TrendingLanguages';
 import * as graphql from '../../../src/datasource/GraphQL';
+import { act } from 'react-dom/test-utils';
 
 describe('integration tests', () => {
 
   it('renders an error properly', async () => {
     const mock = jest.spyOn(graphql, 'getRecentTopLanguages');
     mock.mockReturnValue({ data: { errors: [{ message: "Mock Error" }] } });
-    const wrapper = await mount(<TrendingLanguages/>);
-    wrapper.update();
+    const wrapper = mount(<TrendingLanguages/>);
+
+    await act(async () => {
+      await Promise.resolve(wrapper);
+      await new Promise(resolve => setImmediate(resolve));
+      wrapper.update();
+    });
 
     expect(wrapper.find('.error')).toHaveLength(1);
     expect(wrapper.find('.error').text()).toEqual("Mock Error");
@@ -75,8 +81,13 @@ describe('integration tests', () => {
         }
       }
     });
-    const wrapper = await mount(<TrendingLanguages/>);
-    wrapper.update();
+    const wrapper = mount(<TrendingLanguages/>);
+
+    await act(async () => {
+      await Promise.resolve(wrapper);
+      await new Promise(resolve => setImmediate(resolve));
+      wrapper.update();
+    });
 
     expect(wrapper.find('.error')).toHaveLength(0);
 

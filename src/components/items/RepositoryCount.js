@@ -12,15 +12,18 @@ const RepositoryCount = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getPersonalRepositories('AJarombek')
-      .then(result => {
-        if (result.data.data) {
-          setRepoCount(result.data.data.user.repositories.totalCount);
-          setError(null);
-        } else {
-          setError(result.data.errors[0].message);
-        }
-      });
+    async function getGraphQLResult() {
+      const result = await getPersonalRepositories('AJarombek');
+
+      if (result.data.data) {
+        setRepoCount(result.data.data.user.repositories.totalCount);
+        setError(null);
+      } else {
+        setError(result.data.errors[0].message);
+      }
+    }
+
+    getGraphQLResult();
   }, []);
 
   return (

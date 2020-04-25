@@ -14,15 +14,18 @@ const MostRecentCommit = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getMostRecentCommit('AJarombek')
-      .then(result => {
-        if (result.data.data) {
-          generateMostRecentCommits(result.data.data.user.repositories.edges);
-          setError(null);
-        } else {
-          setError(result.data.errors[0].message);
-        }
-      });
+    async function getGraphQLResult() {
+      const result = await getMostRecentCommit('AJarombek');
+
+      if (result.data.data) {
+        generateMostRecentCommits(result.data.data.user.repositories.edges);
+        setError(null);
+      } else {
+        setError(result.data.errors[0].message);
+      }
+    }
+
+    getGraphQLResult();
   }, []);
 
   const generateMostRecentCommits = (repositories) => {

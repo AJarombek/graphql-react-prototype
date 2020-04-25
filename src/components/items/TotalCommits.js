@@ -12,14 +12,17 @@ const TotalCommits = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getTotalCommits('AJarombek')
-      .then(result => {
-        if (result.data.data) {
-          generateMostTotalCommits(result.data.data.user.repositories.edges);
-        } else {
-          setError(result.data.errors[0].message);
-        }
-      });
+    async function getGraphQLResult() {
+      const result = await getTotalCommits('AJarombek');
+
+      if (result.data.data) {
+        generateMostTotalCommits(result.data.data.user.repositories.edges);
+      } else {
+        setError(result.data.errors[0].message);
+      }
+    }
+
+    getGraphQLResult();
   }, []);
 
   const generateMostTotalCommits = (repositories) => {

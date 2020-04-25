@@ -13,16 +13,19 @@ const MostProductiveWeeks = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getWeeklyContributionCounts('AJarombek')
-      .then(result => {
-        if (result.data.data) {
-          calculateMostProductiveWeeks(
-            result.data.data.user.contributionsCollection.contributionCalendar.weeks
-          );
-        } else {
-          setError(result.data.errors[0].message);
-        }
-      });
+    async function getGraphQLResult() {
+      const result = await getWeeklyContributionCounts('AJarombek');
+
+      if (result.data.data) {
+        calculateMostProductiveWeeks(
+          result.data.data.user.contributionsCollection.contributionCalendar.weeks
+        );
+      } else {
+        setError(result.data.errors[0].message);
+      }
+    }
+
+    getGraphQLResult();
   }, []);
 
   const calculateMostProductiveWeeks = (weeks) => {
