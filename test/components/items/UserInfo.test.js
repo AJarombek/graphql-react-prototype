@@ -24,7 +24,6 @@ describe('integration tests', () => {
   it('renders an error properly', async () => {
     const mock = jest.spyOn(graphql, 'getUserInfo');
     mock.mockReturnValue({ data: { errors: [{ message: "Mock Error" }] } });
-    //mock.mockReturnValue({ data: { data: { user: { name: 'Andy'}}} });
     const wrapper = mount(<UserInfo/>);
 
     await act(async () => {

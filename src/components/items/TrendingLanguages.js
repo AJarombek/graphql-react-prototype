@@ -13,14 +13,17 @@ const TrendingLanguages = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getRecentTopLanguages('AJarombek')
-      .then(result => {
-        if (result.data.data) {
-          generateTrendingLanguages(result.data.data.user.repositories.edges);
-        } else {
-          setError(result.data.errors[0].message);
-        }
-      });
+    async function getGraphQLResult() {
+      const result = await getRecentTopLanguages('AJarombek');
+
+      if (result.data.data) {
+        generateTrendingLanguages(result.data.data.user.repositories.edges);
+      } else {
+        setError(result.data.errors[0].message);
+      }
+    }
+
+    getGraphQLResult();
   }, []);
 
   const generateTrendingLanguages = (repositories) => {
