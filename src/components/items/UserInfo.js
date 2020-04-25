@@ -12,15 +12,19 @@ const UserInfo = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getUserInfo('AJarombek')
-      .then(result => {
-        if (result.data.data) {
-          setUser(result.data.data.user);
-          setError(null);
-        } else {
-          setError(result.data.errors[0].message);
-        }
-      });
+    async function getGraphQLResult() {
+      const result = await getUserInfo('AJarombek');
+
+      console.info(result);
+      if (result.data.data) {
+        setUser(result.data.data.user);
+        setError(null);
+      } else {
+        setError(result.data.errors[0].message);
+      }
+    }
+
+    getGraphQLResult()
   }, []);
 
   return (

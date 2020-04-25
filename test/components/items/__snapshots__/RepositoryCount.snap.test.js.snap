@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="items repository-count"
+>
+  <h3>
+    Number of Repositories
+  </h3>
+  <h2>
+    0
+  </h2>
+</div>
+`;
