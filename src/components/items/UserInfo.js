@@ -15,7 +15,6 @@ const UserInfo = () => {
     async function getGraphQLResult() {
       const result = await getUserInfo('AJarombek');
 
-      console.info(result);
       if (result.data.data) {
         setUser(result.data.data.user);
         setError(null);
