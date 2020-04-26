@@ -4,8 +4,22 @@
  * Date: 4/15/2020
  */
 
+@import "../../vars";
+
 .top-language {
   grid-area: topLang;
+  height: 125px;
+
+  h2 {
+    margin: 20px 0;
+    font-size: 24px;
+    .hoverPurple()
+  }
+
+  b {
+    color: @contrastPurple;
+    font-size: 18px;
+  }
 
   .error {
     height: 100%;

@@ -50,9 +50,9 @@ const MostRecentCommit = () => {
         </div>
         :
         <>
-          <h2>Most Total Commits</h2>
+          <h2>Most Recently Committed</h2>
           {reposByDate.map(repository =>
-            <div key={repository.name}>
+            <div className="commit" key={repository.name}>
               <p>{repository.name}</p>
               <p>{repository.lastCommitDate.format('MMM Do, YYYY h:mm A')}</p>
             </div>

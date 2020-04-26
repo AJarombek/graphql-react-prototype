@@ -16,7 +16,7 @@
     "logo location"
     "logo website ";
 
-  height: 100px;
+  height: 125px;
 
   figure {
     grid-area: logo;
@@ -45,6 +45,11 @@
 
   a {
     grid-area: website;
+    transition: color ease 0.4s;
+
+    &:hover {
+      color: @contrastPurple;
+    }
   }
 
   .error {

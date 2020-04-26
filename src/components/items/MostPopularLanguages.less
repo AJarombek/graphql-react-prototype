@@ -8,4 +8,37 @@
 
 .most-popular-languages {
   grid-area: popLang;
+
+  h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .language:nth-child(2) {
+    p:nth-child(1) {
+      font-size: 24px;
+    }
+
+    p:nth-child(2) {
+      font-size: 28px;
+      .hoverPurple();
+    }
+  }
+
+  .language {
+    display: flex;
+    align-items: center;
+    width: 180px;
+    margin: 5px 0;
+
+    p:nth-child(1) {
+      font-size: 20px;
+    }
+
+    p:nth-child(2) {
+      font-size: 24px;
+      margin: 0 0 0 auto;
+    }
+  }
 }

@@ -63,7 +63,7 @@ const TopLanguage = () => {
         <>
           <p>Most Popular Programming Language</p>
           <h2>{topLanguage}</h2>
-          <p>Top language in {topLanguageCount} repositories.</p>
+          <p>Top language in <b>{topLanguageCount}</b> repositories.</p>
         </>
       }
     </div>

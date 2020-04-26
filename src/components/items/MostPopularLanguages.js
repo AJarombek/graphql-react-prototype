@@ -43,7 +43,7 @@ const MostPopularLanguages = () => {
         <>
           <h2>Most Popular Languages All-Time</h2>
           { mostPopularLanguages.map(language =>
-            <div key={language.name}>
+            <div className="language" key={language.name}>
               <p>{language.name}</p>
               <p>{language.occurrences}</p>
             </div>

@@ -4,15 +4,23 @@
  * Date: 4/15/2020
  */
 
+@import "../../vars";
+
 .repository-count {
   grid-area: repoCount;
+  height: 125px;
+
+  h3, h2 {
+    text-align: center;
+  }
 
   h3 {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   h2 {
-    font-size: 32px;
+    font-size: 42px;
+    .hoverPurple()
   }
 
   .error {
