@@ -9,18 +9,37 @@
 .trending-languages {
   grid-area: trndLang;
 
+  @media (max-width: 750px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   h2 {
     margin-bottom: 20px;
+
+    @media (max-width: 750px) {
+      font-size: 22px;
+      text-align: center;
+    }
   }
 
   .language:nth-child(2) {
     p:nth-child(1) {
       font-size: 20px;
+
+      @media (max-width: 750px) {
+        font-size: 24px;
+      }
     }
 
     p:nth-child(2) {
       font-size: 20px;
       .hoverPurple();
+
+      @media (max-width: 750px) {
+        font-size: 28px;
+      }
     }
   }
 
@@ -30,13 +49,25 @@
     margin: 8px 0;
     width: 250px;
 
+    @media (max-width: 750px) {
+      width: 350px;
+    }
+
     p:nth-child(1) {
       font-size: 16px;
+
+      @media (max-width: 750px) {
+        font-size: 20px;
+      }
     }
 
     p:nth-child(2) {
       font-size: 18px;
       margin: 0 0 0 auto;
+
+      @media (max-width: 750px) {
+        font-size: 22px;
+      }
     }
   }
 }

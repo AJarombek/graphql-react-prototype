@@ -14,4 +14,25 @@
     "prodWeeks prodWeeks popLang  popLang   trndLang  trndLang";
 
   margin-top: 40px;
+
+  @media (max-width: 1100px) {
+    grid-template-areas:
+      "userInfo  userInfo  userInfo   userInfo   repoCount  repoCount"
+      "popLang   popLang   popLang    topLang    topLang    topLang"
+      "popLang   popLang   popLang    totCommit  totCommit  totCommit"
+      "popLang   popLang   popLang    trndLang   trndLang   trndLang"
+      "prodWeeks prodWeeks prodWeeks  recCommit  recCommit  recCommit";
+  }
+
+  @media (max-width: 750px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "userInfo  userInfo  repoCount"
+      "topLang   topLang topLang"
+      "popLang popLang popLang"
+      "totCommit   totCommit totCommit"
+      "trndLang   trndLang trndLang"
+      "prodWeeks prodWeeks prodWeeks"
+      "recCommit   recCommit  recCommit";
+  }
 }
