@@ -14,6 +14,7 @@ Components for each item in the dashboard.
 **React Components**
 
 | Filename                    | Description                                                                           |
+|-----------------------------|---------------------------------------------------------------------------------------|
 | `MostPopularLanguages.js`   | `MostPopularLanguages` component which displays the 5 most popular languages.         |
 | `MostPopularLanguages.less` | Stylesheet for the `MostPopularLanguages` component.                                  |
 | `MostProductiveWeeks.js`    | `MostProductiveWeeks` component which displays the 5 weeks with the most commits.     |

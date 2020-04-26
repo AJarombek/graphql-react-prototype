@@ -24,3 +24,4 @@ Apollo.
 
 1) [Using Environment Variables in React](https://medium.com/@trekinbami/using-environment-variables-in-react-6b0a99d83cf5)
 2) [Axios Docs](https://github.com/axios/axios)
+3) [regeneratorRuntime for `async`/`await` Transpiling](https://github.com/babel/babel/issues/9849#issuecomment-612595221)
