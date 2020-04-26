@@ -51,7 +51,7 @@ const TotalCommits = () => {
         <>
           <h2>Most Total Commits</h2>
           { repoCommits.map(repository =>
-            <div key={repository.name}>
+            <div className="commits" key={repository.name}>
               <p>{repository.name}</p>
               <p>{repository.commits}</p>
             </div>

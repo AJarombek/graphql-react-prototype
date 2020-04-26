@@ -57,7 +57,7 @@ const MostProductiveWeeks = () => {
         <>
           <h2>Most Productive Weeks</h2>
           { weeklyContributions.map(week =>
-            <div key={week.date}>
+            <div className="week" key={week.date}>
               <p>{week.date}</p>
               <p>{week.contributions} Commits</p>
             </div>

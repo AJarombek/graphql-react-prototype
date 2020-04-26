@@ -8,20 +8,23 @@
 
 .most-popular-languages {
   grid-area: popLang;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   h2 {
-    font-size: 24px;
+    font-size: 26px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 
   .language:nth-child(2) {
     p:nth-child(1) {
-      font-size: 24px;
+      font-size: 32px;
     }
 
     p:nth-child(2) {
-      font-size: 28px;
+      font-size: 36px;
       .hoverPurple();
     }
   }
@@ -29,15 +32,15 @@
   .language {
     display: flex;
     align-items: center;
-    width: 180px;
+    width: 300px;
     margin: 5px 0;
 
     p:nth-child(1) {
-      font-size: 20px;
+      font-size: 24px;
     }
 
     p:nth-child(2) {
-      font-size: 24px;
+      font-size: 28px;
       margin: 0 0 0 auto;
     }
   }
