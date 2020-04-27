@@ -18,13 +18,13 @@ const DashboardItems = () => {
   return (
     <div className="dashboard-items">
       <UserInfo />
-      <TopLanguage />
       <RepositoryCount />
-      <MostRecentCommit />
-      <MostProductiveWeeks />
+      <TopLanguage />
       <MostPopularLanguages />
       <TotalCommits />
       <TrendingLanguages />
+      <MostRecentCommit />
+      <MostProductiveWeeks />
     </div>
   );
 };
