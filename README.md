@@ -6,6 +6,14 @@ This front-end application demonstrates how to integrate a GraphQL API with a Re
 This prototype invokes GraphQL with an HTTP client library, not using a GraphQL client library like 
 Apollo.
 
+### Commands
+
+**Build Dockerfiles Locally**
+
+```bash
+docker image build -t graphql-react-prototype-base:latest -f base.dockerfile .
+```
+
 ### Files
 
 | Filename                 | Description                                                                |
@@ -15,6 +23,8 @@ Apollo.
 | `test`                   | Jest/Enzyme unit/integration tests for the application.                    |
 | `.babelrc`               | Configuration for the Babel transpiler.                                    |
 | `.eslintrc.js`           | Configuration for ESLint using the AirBnB style guide.                     |
+| `app.dockerfile`         | Dockerfile for hosting the application server.                             |
+| `base.dockerfile`        | Dockerfile for the base application and testing environment.               |
 | `jest.config.js`         | Jest unit testing configuration for the React app.                         |
 | `package.json`           | Entry point for the npm application.  Contains dependency definitions.     |
 | `package-lock.json`      | Where npm stores the versions of each dependency.                          |
