@@ -12,6 +12,7 @@ Apollo.
 
 ```bash
 docker image build -t graphql-react-prototype-base:latest -f base.dockerfile .
+docker image build -t graphql-react-prototype-app:latest -f app.dockerfile .
 ```
 
 ### Files
@@ -19,6 +20,7 @@ docker image build -t graphql-react-prototype-base:latest -f base.dockerfile .
 | Filename                 | Description                                                                |
 |--------------------------|----------------------------------------------------------------------------|
 | `graphql`                | GraphQL queries used throughout the application.                           |
+| `infra`                  | AWS Infrastructure written in Terraform.                                   |
 | `src`                    | React application code.                                                    |
 | `test`                   | Jest/Enzyme unit/integration tests for the application.                    |
 | `.babelrc`               | Configuration for the Babel transpiler.                                    |
