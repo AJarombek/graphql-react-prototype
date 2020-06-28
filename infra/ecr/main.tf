@@ -1,5 +1,5 @@
 /**
- * Infrastructure for the GraphQL React Prototype.
+ * Infrastructure for ECR repositories used by the GraphQL React Prototype.
  * Author: Andrew Jarombek
  * Date: 6/28/2020
  */
@@ -18,7 +18,7 @@ terraform {
   backend "s3" {
     bucket = "andrew-jarombek-terraform-state"
     encrypt = true
-    key = "sandbox/graphql-react-prototype"
+    key = "sandbox/graphql-react-prototype/ecr"
     region = "us-east-1"
   }
 }

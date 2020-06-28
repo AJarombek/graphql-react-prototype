@@ -1,0 +1,36 @@
+# Kubernetes ingress object for the graphql-react-prototype application.
+# Author: Andrew Jarombek
+# Date: 6/28/2020
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: graphql-react-prototype-ingress
+  namespace: sandbox
+  annotations:
+    kubernetes.io/ingress.class: alb
+    external-dns.alpha.kubernetes.io/hostname: graphql-react.prototype.jarombek.io
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/certificate-arn: ${ACM_CERT_ARN}
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/healthcheck-path: '/login'
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/security-groups: ${SECURITY_GROUP_ID}
+    alb.ingress.kubernetes.io/subnets: ${SUBNET_IDS}
+    alb.ingress.kubernetes.io/target-type: instance
+    alb.ingress.kubernetes.io/tags: Name=graphql-react-prototype-load-balancer,Application=graphql-react-prototype,Environment=sandbox
+  labels:
+    version: v1.0.0
+    environment: sandbox
+    application: graphql-react-prototype
+spec:
+  rules:
+    - host: graphql-react.prototype.jarombek.io
+      http:
+        paths:
+          - path: /*
+            backend:
+              serviceName: graphql-react-prototype-service
+              servicePort: 80
+
