@@ -21,21 +21,6 @@ exports[`renders correctly 1`] = `
     </a>
   </div>
   <div
-    className="items top-language"
-  >
-    <p>
-      Most Popular Programming Language
-    </p>
-    <h2>
-      
-    </h2>
-    <p>
-      Top language in 
-      0
-       repositories.
-    </p>
-  </div>
-  <div
     className="items repository-count"
   >
     <h3>
@@ -46,18 +31,21 @@ exports[`renders correctly 1`] = `
     </h2>
   </div>
   <div
-    className="items most-recent-commit"
+    className="items top-language"
   >
+    <p>
+      Most Popular Programming Language
+    </p>
     <h2>
-      Most Total Commits
+      
     </h2>
-  </div>
-  <div
-    className="items most-productive-weeks"
-  >
-    <h2>
-      Most Productive Weeks
-    </h2>
+    <p>
+      Top language in 
+      <b>
+        0
+      </b>
+       repositories.
+    </p>
   </div>
   <div
     className="items most-popular-languages"
@@ -78,6 +66,20 @@ exports[`renders correctly 1`] = `
   >
     <h2>
       Trending Languages
+    </h2>
+  </div>
+  <div
+    className="items most-recent-commit"
+  >
+    <h2>
+      Most Recently Committed
+    </h2>
+  </div>
+  <div
+    className="items most-productive-weeks"
+  >
+    <h2>
+      Most Productive Weeks
     </h2>
   </div>
 </div>

@@ -12,7 +12,9 @@ exports[`renders correctly 1`] = `
   </h2>
   <p>
     Top language in 
-    0
+    <b>
+      0
+    </b>
      repositories.
   </p>
 </div>

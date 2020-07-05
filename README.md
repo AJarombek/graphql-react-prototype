@@ -15,6 +15,25 @@ docker image build -t graphql-react-prototype-base:latest -f base.dockerfile .
 docker image build -t graphql-react-prototype-app:latest -f app.dockerfile .
 ```
 
+**Start Docker Containers**
+
+```bash 
+# From ECR
+docker image pull 739088120071.dkr.ecr.us-east-1.amazonaws.com/graphql-react-prototype-base
+docker container run -d --name graphql-react-prototype-base \
+    739088120071.dkr.ecr.us-east-1.amazonaws.com/graphql-react-prototype-base:latest
+
+# From local build
+docker container run -d --name graphql-react-prototype-base graphql-react-prototype-base:latest
+
+# Execute commands on the running container
+docker container exec -it graphql-react-prototype-base bash
+
+# Stop and Remove containers
+docker container stop graphql-react-prototype-base
+docker container rm graphql-react-prototype-base
+```
+
 ### Files
 
 | Filename                 | Description                                                                |

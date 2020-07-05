@@ -75,7 +75,7 @@ describe('integration tests', () => {
     expect(wrapper.find('.most-recent-commit').childAt(1).childAt(0).text())
       .toEqual("graphql-react-prototype");
     expect(wrapper.find('.most-recent-commit').childAt(1).childAt(1).text())
-      .toEqual("Apr 25th, 2020 6:57 PM");
+      .toMatch(/Apr 25th, 2020 [0-9]{1,2}:[0-9]{2} (PM|AM)/);
 
     mock.mockRestore();
   });

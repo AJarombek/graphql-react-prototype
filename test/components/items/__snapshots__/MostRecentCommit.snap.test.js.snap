@@ -5,7 +5,7 @@ exports[`renders correctly 1`] = `
   className="items most-recent-commit"
 >
   <h2>
-    Most Total Commits
+    Most Recently Committed
   </h2>
 </div>
 `;
