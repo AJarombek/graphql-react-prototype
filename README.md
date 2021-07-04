@@ -49,6 +49,7 @@ docker container rm graphql-react-prototype-base
 | `app.dockerfile`         | Dockerfile for hosting the application server.                             |
 | `base.dockerfile`        | Dockerfile for the base application and testing environment.               |
 | `jest.config.js`         | Jest unit testing configuration for the React app.                         |
+| `nginx.conf`             | Nginx web server configuration.                                            |
 | `package.json`           | Entry point for the npm application.  Contains dependency definitions.     |
 | `package-lock.json`      | Where npm stores the versions of each dependency.                          |
 | `webpack.config.js`      | Webpack bundler configuration file.                                        |

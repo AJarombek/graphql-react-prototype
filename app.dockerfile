@@ -13,4 +13,7 @@ LABEL maintainer="andrew@jarombek.com" \
       version="1.0.0" \
       description="Dockerfile for running the graphql-react-prototype application on an ngnix server."
 
+RUN rm /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d
+
 COPY --from=base /src/dist /usr/share/nginx/html
