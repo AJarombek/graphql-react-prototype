@@ -12,6 +12,36 @@ const TopLanguage = () => {
   const [topLanguageCount, setTopLanguageCount] = useState(0);
   const [error, setError] = useState(null);
 
+  const computeTopLanguage = (repoList) => {
+    // I'm always here to help if needed
+    const languageUsage = {};
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const repo of repoList) {
+      const language = repo.node.primaryLanguage.name;
+
+      if (languageUsage.hasOwnProperty(language)) {
+        languageUsage[language] = languageUsage[language] + 1;
+      } else {
+        languageUsage[language] = 1;
+      }
+    }
+
+    let maxLanguageName = '';
+    let maxLanguageCount = 0;
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const language of Object.keys(languageUsage)) {
+      if (languageUsage[language] > maxLanguageCount) {
+        maxLanguageName = language;
+        maxLanguageCount = languageUsage[language];
+      }
+    }
+
+    setTopLanguage(maxLanguageName);
+    setTopLanguageCount(maxLanguageCount);
+  };
+
   useEffect(() => {
     async function getGraphQLResult() {
       const result = await getTopLanguage('AJarombek');
@@ -27,45 +57,26 @@ const TopLanguage = () => {
     getGraphQLResult();
   }, []);
 
-  const computeTopLanguage = (repoList) => {
-    // I'm always here to help if needed
-    const languageUsage = {};
-    for (let repo of repoList) {
-      const language = repo.node.primaryLanguage.name;
-
-      if (languageUsage.hasOwnProperty(language)) {
-        languageUsage[language] = languageUsage[language] + 1;
-      } else {
-        languageUsage[language] = 1;
-      }
-    }
-
-    let maxLanguageName = '';
-    let maxLanguageCount = 0;
-    for (let language of Object.keys(languageUsage)) {
-      if (languageUsage[language] > maxLanguageCount) {
-        maxLanguageName = language;
-        maxLanguageCount = languageUsage[language];
-      }
-    }
-
-    setTopLanguage(maxLanguageName);
-    setTopLanguageCount(maxLanguageCount);
-  };
-
   return (
     <div className="items top-language">
-      {error ?
-        <div className="error">
-          <h6>{error}</h6>
-        </div>
-        :
-        <>
-          <p>Most Popular Programming Language</p>
-          <h2>{topLanguage}</h2>
-          <p>Top language in <b>{topLanguageCount}</b> repositories.</p>
-        </>
-      }
+      {error
+        ? (
+          <div className="error">
+            <h6>{error}</h6>
+          </div>
+        )
+        : (
+          <>
+            <p>Most Popular Programming Language</p>
+            <h2>{topLanguage}</h2>
+            <p>
+              Top language in
+              <b>{topLanguageCount}</b>
+              {' '}
+              repositories.
+            </p>
+          </>
+        )}
     </div>
   );
 };

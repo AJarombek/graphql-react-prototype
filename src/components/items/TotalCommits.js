@@ -11,6 +11,23 @@ const TotalCommits = () => {
   const [repoCommits, setRepoCommits] = useState([]);
   const [error, setError] = useState(null);
 
+  const generateMostTotalCommits = (repositories) => {
+    const repositoriesByCommits = [];
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const repository of repositories) {
+      repositoriesByCommits.push({
+        name: repository.node.name,
+        commits: repository.node.ref?.target?.history?.totalCount ?? 0,
+      });
+    }
+
+    repositoriesByCommits.sort((a, b) => b.commits - a.commits);
+
+    setRepoCommits(repositoriesByCommits.slice(0, 5));
+    setError(null);
+  };
+
   useEffect(() => {
     async function getGraphQLResult() {
       const result = await getTotalCommits('AJarombek');
@@ -25,40 +42,25 @@ const TotalCommits = () => {
     getGraphQLResult();
   }, []);
 
-  const generateMostTotalCommits = (repositories) => {
-
-    const repositoriesByCommits = [];
-    for (const repository of repositories) {
-      repositoriesByCommits.push({
-        name: repository.node.name,
-        commits: repository.node.ref.target.history.totalCount
-      })
-    }
-
-    repositoriesByCommits.sort((a, b) => b.commits - a.commits);
-
-    setRepoCommits(repositoriesByCommits.slice(0, 5));
-    setError(null);
-  };
-
   return (
     <div className="items total-commits">
-      {error ?
-        <div className="error">
-          <h6>{error}</h6>
-        </div>
-        :
-        <>
-          <h2>Most Total Commits</h2>
-          { repoCommits.map(repository =>
-            <div className="commits" key={repository.name}>
-              <p>{repository.name}</p>
-              <p>{repository.commits}</p>
-            </div>
-          )
-          }
-        </>
-      }
+      {error
+        ? (
+          <div className="error">
+            <h6>{error}</h6>
+          </div>
+        )
+        : (
+          <>
+            <h2>Most Total Commits</h2>
+            { repoCommits.map((repository) => (
+              <div className="commits" key={repository.name}>
+                <p>{repository.name}</p>
+                <p>{repository.commits}</p>
+              </div>
+            ))}
+          </>
+        )}
     </div>
   );
 };

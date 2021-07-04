@@ -4,9 +4,11 @@
  * @since 4/9/2020
  */
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-hot-loader';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from "./components/App";
+import App from './components/App';
 
 ReactDOM.render(<App />, document.getElementById('root'));

@@ -14,7 +14,11 @@ Apollo.
 
 ```bash
 docker image build -t graphql-react-prototype-base:latest -f base.dockerfile .
-docker image build -t graphql-react-prototype-app:latest -f app.dockerfile .
+
+docker image build \
+    -t graphql-react-prototype-app:latest \
+    --build-arg GITHUB_ACCESS_TOKEN='xxxx' \
+    -f app.local.dockerfile .
 ```
 
 **Start Docker Containers**
@@ -25,8 +29,11 @@ docker image pull 739088120071.dkr.ecr.us-east-1.amazonaws.com/graphql-react-pro
 docker container run -d --name graphql-react-prototype-base \
     739088120071.dkr.ecr.us-east-1.amazonaws.com/graphql-react-prototype-base:latest
 
-# From local build
+# Base Image From local build
 docker container run -d --name graphql-react-prototype-base graphql-react-prototype-base:latest
+
+# App Image From local build
+docker container run -d -p 8081:80 --name graphql-react-prototype-app graphql-react-prototype-app:latest
 
 # Execute commands on the running container
 docker container exec -it graphql-react-prototype-base bash
@@ -34,6 +41,9 @@ docker container exec -it graphql-react-prototype-base bash
 # Stop and Remove containers
 docker container stop graphql-react-prototype-base
 docker container rm graphql-react-prototype-base
+
+docker container stop graphql-react-prototype-app
+docker container rm graphql-react-prototype-app
 ```
 
 ### Files
@@ -47,6 +57,7 @@ docker container rm graphql-react-prototype-base
 | `.babelrc`               | Configuration for the Babel transpiler.                                    |
 | `.eslintrc.js`           | Configuration for ESLint using the AirBnB style guide.                     |
 | `app.dockerfile`         | Dockerfile for hosting the application server.                             |
+| `app.local.dockerfile`   | Dockerfile for hosting the application server locally.                     |
 | `base.dockerfile`        | Dockerfile for the base application and testing environment.               |
 | `jest.config.js`         | Jest unit testing configuration for the React app.                         |
 | `nginx.conf`             | Nginx web server configuration.                                            |

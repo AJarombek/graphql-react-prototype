@@ -1,10 +1,15 @@
-# Application server Dockerfile for the graphql-react-prototype.
+# Application server Dockerfile for the graphql-react-prototype when run locally.
 # Author: Andrew Jarombek
-# Date: 6/28/2020
+# Date: 7/3/2021
 
-FROM 739088120071.dkr.ecr.us-east-1.amazonaws.com/graphql-react-prototype-base:latest AS base
+FROM graphql-react-prototype-base:latest AS base
+
+ARG GITHUB_ACCESS_TOKEN
 
 WORKDIR app
+RUN touch /app/.env \
+    && echo "GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN" >> /app/.env
+
 RUN npm run build
 
 FROM nginx AS host

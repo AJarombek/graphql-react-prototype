@@ -28,16 +28,18 @@ const RepositoryCount = () => {
 
   return (
     <div className="items repository-count">
-      {error ?
-        <div className="error">
-          <h6>{error}</h6>
-        </div>
-        :
-        <>
-          <h3>Number of Repositories</h3>
-          <h2>{repoCount}</h2>
-        </>
-      }
+      {error
+        ? (
+          <div className="error">
+            <h6>{error}</h6>
+          </div>
+        )
+        : (
+          <>
+            <h3>Number of Repositories</h3>
+            <h2>{repoCount}</h2>
+          </>
+        )}
     </div>
   );
 };

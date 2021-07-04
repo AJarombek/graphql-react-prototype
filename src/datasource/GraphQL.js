@@ -9,13 +9,11 @@ import axios from 'axios';
 const instance = axios.create({
   baseURL: 'https://api.github.com/graphql',
   headers: {
-    Authorization: `bearer ${process.env.GITHUB_ACCESS_TOKEN}`
-  }
+    Authorization: `bearer ${process.env.GITHUB_ACCESS_TOKEN}`,
+  },
 });
 
-const request = (query, variables) => {
-  return instance.post('', { query, variables });
-};
+const request = (query, variables) => instance.post('', { query, variables });
 
 const getUserInfoQuery = `
   query UserInfo($username: String!) {
@@ -29,9 +27,7 @@ const getUserInfoQuery = `
   }
 `;
 
-const getUserInfo = (username) => {
-  return request(getUserInfoQuery, { username });
-};
+const getUserInfo = (username) => request(getUserInfoQuery, { username });
 
 const getPersonalRepositoriesQuery = `
   query PersonalRepositories($username: String!) {
@@ -44,9 +40,7 @@ const getPersonalRepositoriesQuery = `
   }
 `;
 
-const getPersonalRepositories = (username) => {
-  return request(getPersonalRepositoriesQuery, { username });
-};
+const getPersonalRepositories = (username) => request(getPersonalRepositoriesQuery, { username });
 
 const getTopLanguageQuery = `
   query TopLanguage($username: String!) {
@@ -65,9 +59,7 @@ const getTopLanguageQuery = `
   }
 `;
 
-const getTopLanguage = (username) => {
-  return request(getTopLanguageQuery, { username });
-};
+const getTopLanguage = (username) => request(getTopLanguageQuery, { username });
 
 const getRecentTopLanguagesQuery = `
   query RecentTopLanguages($username: String!) {
@@ -95,9 +87,7 @@ const getRecentTopLanguagesQuery = `
   }
 `;
 
-const getRecentTopLanguages = (username) => {
-  return request(getRecentTopLanguagesQuery, { username });
-};
+const getRecentTopLanguages = (username) => request(getRecentTopLanguagesQuery, { username });
 
 const getTotalCommitsQuery = `
   query TotalCommits($username: String!) {
@@ -122,9 +112,7 @@ const getTotalCommitsQuery = `
   }
 `;
 
-const getTotalCommits = (username) => {
-  return request(getTotalCommitsQuery, { username });
-};
+const getTotalCommits = (username) => request(getTotalCommitsQuery, { username });
 
 const getMostRecentCommitQuery = `
   query MostRecentCommit($username: String!) {
@@ -153,9 +141,7 @@ const getMostRecentCommitQuery = `
   }
 `;
 
-const getMostRecentCommit = (username) => {
-  return request(getMostRecentCommitQuery, { username });
-};
+const getMostRecentCommit = (username) => request(getMostRecentCommitQuery, { username });
 
 const getWeeklyContributionCountsQuery = `
   query WeeklyContributionCounts($username: String!) {
@@ -174,9 +160,7 @@ const getWeeklyContributionCountsQuery = `
   }
 `;
 
-const getWeeklyContributionCounts = (username) => {
-  return request(getWeeklyContributionCountsQuery, { username });
-};
+const getWeeklyContributionCounts = (username) => request(getWeeklyContributionCountsQuery, { username });
 
 export {
   getUserInfo,
@@ -185,5 +169,5 @@ export {
   getRecentTopLanguages,
   getTotalCommits,
   getMostRecentCommit,
-  getWeeklyContributionCounts
+  getWeeklyContributionCounts,
 };

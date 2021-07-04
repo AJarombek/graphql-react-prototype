@@ -14,5 +14,11 @@ module.exports = {
     'airbnb',
     'plugin:react/recommended'
   ],
-  parser: "babel-eslint"
+  parser: "babel-eslint",
+  rules: {
+    "no-prototype-builtins": "off",
+    "operator-assignment": "off",
+    "guard-for-in": "off",
+    "react/jsx-filename-extension": "off"
+  }
 };

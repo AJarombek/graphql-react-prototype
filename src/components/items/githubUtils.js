@@ -10,10 +10,11 @@ import moment from 'moment';
 const getLanguagesSortedByOccurrence = (repositories, recentOnly = false) => {
   const languages = {};
 
-  for (let repo of repositories) {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const repo of repositories) {
     const creationDate = repo.node.createdAt;
 
-    if (!recentOnly || moment(creationDate) >= moment("2019-01-01")) {
+    if (!recentOnly || moment(creationDate) >= moment('2019-01-01')) {
       const language = repo.node.primaryLanguage.name;
 
       if (languages.hasOwnProperty(language)) {
@@ -27,15 +28,18 @@ const getLanguagesSortedByOccurrence = (repositories, recentOnly = false) => {
   }
 
   const sortedLanguages = [];
+
+  // eslint-disable-next-line no-restricted-syntax
   for (const language in languages) {
     sortedLanguages.push({
       name: language,
-      occurrences: languages[language]
+      occurrences: languages[language],
     });
   }
 
   sortedLanguages.sort((a, b) => b.occurrences - a.occurrences);
-  return sortedLanguages
+  return sortedLanguages;
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export { getLanguagesSortedByOccurrence };

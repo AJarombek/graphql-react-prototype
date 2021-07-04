@@ -8,9 +8,7 @@ LABEL maintainer="andrew@jarombek.com" \
       version="1.0.0" \
       description="Dockerfile for setting up the graphql-react-prototype execution/test environment"
 
-COPY . src
+COPY . app
 
-WORKDIR src
+WORKDIR app
 RUN npm install
-
-CMD ["sleep", "infinity"]

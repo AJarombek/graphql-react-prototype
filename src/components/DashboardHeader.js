@@ -6,16 +6,14 @@
 
 import React from 'react';
 
-const DashboardHeader = () => {
-  return (
-    <div className="dashboard-header">
-      <p>GraphQL React Prototype</p>
-      <p>/</p>
-      <p>GitHub</p>
-      <p>/</p>
-      <p>AJarombek</p>
-    </div>
-  );
-};
+const DashboardHeader = () => (
+  <div className="dashboard-header">
+    <p>GraphQL React Prototype</p>
+    <p>/</p>
+    <p>GitHub</p>
+    <p>/</p>
+    <p>AJarombek</p>
+  </div>
+);
 
 export default DashboardHeader;

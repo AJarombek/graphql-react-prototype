@@ -23,25 +23,27 @@ const UserInfo = () => {
       }
     }
 
-    getGraphQLResult()
+    getGraphQLResult();
   }, []);
 
   return (
     <div className="items user-info">
-      {error ?
-        <div className="error">
-          <h6>{error}</h6>
-        </div>
-        :
-        <>
-          <figure>
-            <img src={user.avatarUrl} alt=""/>
-          </figure>
-          <h3>{user.name}</h3>
-          <p>{user.location}</p>
-          <a href={`https:\\\\${user.websiteUrl}`}>Personal Website</a>
-        </>
-      }
+      {error
+        ? (
+          <div className="error">
+            <h6>{error}</h6>
+          </div>
+        )
+        : (
+          <>
+            <figure>
+              <img src={user.avatarUrl} alt="" />
+            </figure>
+            <h3>{user.name}</h3>
+            <p>{user.location}</p>
+            <a href={`https:\\\\${user.websiteUrl}`}>Personal Website</a>
+          </>
+        )}
     </div>
   );
 };
