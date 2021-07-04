@@ -30,12 +30,28 @@ spec:
         environment: sandbox
         application: graphql-react-prototype
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: workload
+                    operator: In
+                    values:
+                      - development-tests
       containers:
         - name: graphql-react-prototype
           image: ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/graphql-react-prototype-app:1.0.0
           readinessProbe:
             periodSeconds: 5
             initialDelaySeconds: 20
+            httpGet:
+              path: /
+              port: 8080
+          livenessProbe:
+            periodSeconds: 5
+            initialDelaySeconds: 20
+            failureThreshold: 4
             httpGet:
               path: /
               port: 8080

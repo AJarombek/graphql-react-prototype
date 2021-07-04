@@ -1,5 +1,7 @@
 # graphql-react-prototype
 
+![Maintained Label](https://img.shields.io/badge/Maintained-Yes-brightgreen?style=for-the-badge)
+
 ### Overview
 
 This front-end application demonstrates how to integrate a GraphQL API with a React.js application.  
