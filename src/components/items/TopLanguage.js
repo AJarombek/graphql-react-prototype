@@ -71,6 +71,7 @@ const TopLanguage = () => {
             <h2>{topLanguage}</h2>
             <p>
               Top language in
+              {' '}
               <b>{topLanguageCount}</b>
               {' '}
               repositories.

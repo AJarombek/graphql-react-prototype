@@ -18,7 +18,7 @@ const TotalCommits = () => {
     for (const repository of repositories) {
       repositoriesByCommits.push({
         name: repository.node.name,
-        commits: repository.node.ref?.target?.history?.totalCount ?? 0,
+        commits: repository.node.ref?.target?.history?.totalCount,
       });
     }
 

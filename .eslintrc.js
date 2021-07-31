@@ -14,11 +14,17 @@ module.exports = {
     'airbnb',
     'plugin:react/recommended'
   ],
+  plugins: [
+    "react-hooks"
+  ],
   parser: "babel-eslint",
   rules: {
+    "max-len": ["error", { "code": 120 }],
     "no-prototype-builtins": "off",
     "operator-assignment": "off",
     "guard-for-in": "off",
-    "react/jsx-filename-extension": "off"
+    "react/jsx-filename-extension": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 };

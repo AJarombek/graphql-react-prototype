@@ -10,6 +10,24 @@ Apollo.
 
 ### Commands
 
+**Lint the JavaScript Code**
+
+```bash 
+npm run lint
+```
+
+**Start the Server Locally**
+
+```bash
+nvm use v13.9.0
+export GITHUB_ACCESS_TOKEN=xxx
+
+touch .env
+echo "GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN" >> .env
+
+npm run start
+```
+
 **Build Dockerfiles Locally**
 
 ```bash

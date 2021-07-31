@@ -20,7 +20,7 @@ const MostRecentCommit = () => {
     for (const repository of repositories) {
       repositoriesByDate.push({
         name: repository.node.name,
-        lastCommitDate: moment(repository.node.ref.target.pushedDate),
+        lastCommitDate: moment(repository.node?.ref?.target?.pushedDate),
       });
     }
 
