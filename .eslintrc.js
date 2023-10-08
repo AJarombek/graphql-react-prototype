@@ -12,10 +12,12 @@ module.exports = {
   },
   extends: [
     'airbnb',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    'prettier'
   ],
   plugins: [
-    "react-hooks"
+    "react-hooks",
+    "prettier"
   ],
   parser: "babel-eslint",
   rules: {
@@ -25,6 +27,11 @@ module.exports = {
     "guard-for-in": "off",
     "react/jsx-filename-extension": "off",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
+    "react-hooks/exhaustive-deps": "warn",
+    "prettier/prettier": ["error", {
+      "singleQuote": true,
+      "printWidth": 120,
+      "semi": true,
+    }]
   }
 };

@@ -2,7 +2,7 @@
 # Author: Andrew Jarombek
 # Date: 6/28/2020
 
-FROM node:14.4.0
+FROM node:18.16.1
 
 LABEL maintainer="andrew@jarombek.com" \
       version="1.0.0" \

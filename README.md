@@ -19,7 +19,7 @@ npm run lint
 **Start the Server Locally**
 
 ```bash
-nvm use v13.9.0
+nvm use v18.16.1
 export GITHUB_ACCESS_TOKEN=xxx
 
 touch .env
@@ -66,22 +66,36 @@ docker container rm graphql-react-prototype-app
 
 ### Files
 
-| Filename                 | Description                                                                |
-|--------------------------|----------------------------------------------------------------------------|
-| `graphql`                | GraphQL queries used throughout the application.                           |
-| `infra`                  | AWS Infrastructure written in Terraform.                                   |
-| `src`                    | React application code.                                                    |
-| `test`                   | Jest/Enzyme unit/integration tests for the application.                    |
-| `.babelrc`               | Configuration for the Babel transpiler.                                    |
-| `.eslintrc.js`           | Configuration for ESLint using the AirBnB style guide.                     |
-| `app.dockerfile`         | Dockerfile for hosting the application server.                             |
-| `app.local.dockerfile`   | Dockerfile for hosting the application server locally.                     |
-| `base.dockerfile`        | Dockerfile for the base application and testing environment.               |
-| `jest.config.js`         | Jest unit testing configuration for the React app.                         |
-| `nginx.conf`             | Nginx web server configuration.                                            |
-| `package.json`           | Entry point for the npm application.  Contains dependency definitions.     |
-| `package-lock.json`      | Where npm stores the versions of each dependency.                          |
-| `webpack.config.js`      | Webpack bundler configuration file.                                        |
+| Filename               | Description                                                            |
+|------------------------|------------------------------------------------------------------------|
+| `graphql`              | GraphQL queries used throughout the application.                       |
+| `infra`                | AWS Infrastructure written in Terraform.                               |
+| `src`                  | React application code.                                                |
+| `test`                 | Jest/Enzyme unit/integration tests for the application.                |
+| `.babelrc`             | Configuration for the Babel transpiler.                                |
+| `.eslintrc.js`         | Configuration for ESLint using the AirBnB style guide.                 |
+| `.prettierignore`      | File patterns for the Prettier code formatter to ignore.               |
+| `.prettierrc`          | Configuration for Prettier.                                            |
+| `app.dockerfile`       | Dockerfile for hosting the application server.                         |
+| `app.local.dockerfile` | Dockerfile for hosting the application server locally.                 |
+| `base.dockerfile`      | Dockerfile for the base application and testing environment.           |
+| `jest.config.js`       | Jest unit testing configuration for the React app.                     |
+| `nginx.conf`           | Nginx web server configuration.                                        |
+| `package.json`         | Entry point for the npm application.  Contains dependency definitions. |
+| `package-lock.json`    | Where npm stores the versions of each dependency.                      |
+| `webpack.config.js`    | Webpack bundler configuration file.                                    |
+
+### Version History
+
+**[V.1.0.1](https://github.com/AJarombek/graphql-react-prototype/tree/v1.0.1) - GitHub Actions**
+
+> Release Date: October 7th, 2023
+
+* Add GitHub Actions for Linting and Formatting
+
+**[V.1.0.0](https://github.com/AJarombek/graphql-react-prototype/tree/v1.0.0) - Initial Release**
+
+> Release Date: July 30th, 2021
 
 ### Resources
 
