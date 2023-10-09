@@ -16,10 +16,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "andrew-jarombek-terraform-state"
+    bucket  = "andrew-jarombek-terraform-state"
     encrypt = true
-    key = "sandbox/graphql-react-prototype/acm"
-    region = "us-east-1"
+    key     = "sandbox/graphql-react-prototype/acm"
+    region  = "us-east-1"
   }
 }
 
@@ -31,13 +31,13 @@ module "jarombek-graphql-proto-acm-certificate" {
   source = "github.com/ajarombek/cloud-modules//terraform-modules/acm-certificate?ref=v0.2.12"
 
   # Mandatory arguments
-  name = "jarombek-graphql-proto-acm-certificate"
-  tag_name = "jarombek-graphql-proto-acm-certificate"
+  name            = "jarombek-graphql-proto-acm-certificate"
+  tag_name        = "jarombek-graphql-proto-acm-certificate"
   tag_application = "jarombek-com"
   tag_environment = "production"
 
   route53_zone_name = "jarombek.com."
-  acm_domain_name = "*.graphql.proto.jarombek.com"
+  acm_domain_name   = "*.graphql.proto.jarombek.com"
 
   # Optional arguments
   route53_zone_private = false

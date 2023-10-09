@@ -8,23 +8,27 @@ module.exports = {
   env: {
     browser: true,
     es2020: true,
-    jest: true
+    jest: true,
   },
-  extends: [
-    'airbnb',
-    'plugin:react/recommended'
-  ],
-  plugins: [
-    "react-hooks"
-  ],
-  parser: "babel-eslint",
+  extends: ['airbnb', 'plugin:react/recommended', 'prettier'],
+  plugins: ['react-hooks', 'prettier'],
+  parser: '@babel/eslint-parser',
   rules: {
-    "max-len": ["error", { "code": 120 }],
-    "no-prototype-builtins": "off",
-    "operator-assignment": "off",
-    "guard-for-in": "off",
-    "react/jsx-filename-extension": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn"
-  }
+    'max-len': ['error', { code: 120 }],
+    'no-prototype-builtins': 'off',
+    'operator-assignment': 'off',
+    'guard-for-in': 'off',
+    'react/jsx-filename-extension': 'off',
+    'react/function-component-definition': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        printWidth: 120,
+        semi: true,
+      },
+    ],
+  },
 };

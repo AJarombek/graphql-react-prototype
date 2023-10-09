@@ -44,23 +44,21 @@ const TotalCommits = () => {
 
   return (
     <div className="items total-commits">
-      {error
-        ? (
-          <div className="error">
-            <h6>{error}</h6>
-          </div>
-        )
-        : (
-          <>
-            <h2>Most Total Commits</h2>
-            { repoCommits.map((repository) => (
-              <div className="commits" key={repository.name}>
-                <p>{repository.name}</p>
-                <p>{repository.commits}</p>
-              </div>
-            ))}
-          </>
-        )}
+      {error ? (
+        <div className="error">
+          <h6>{error}</h6>
+        </div>
+      ) : (
+        <>
+          <h2>Most Total Commits</h2>
+          {repoCommits.map((repository) => (
+            <div className="commits" key={repository.name}>
+              <p>{repository.name}</p>
+              <p>{repository.commits}</p>
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };

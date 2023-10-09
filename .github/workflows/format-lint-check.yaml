@@ -1,0 +1,41 @@
+name: Format and Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  
+  schedule:
+    - cron: "0 5 * * 5"
+
+  workflow_dispatch:
+
+jobs:
+  format_lint:
+    runs-on: ubuntu-latest
+    container: node:18.16.1
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Initialize Yarn
+        run: yarn
+
+      - name: Lint JavaScript Code
+        run: yarn lint
+
+      - name: Format JavaScript Code
+        run: yarn format:check
+
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.3.7
+
+      - name: Format Terraform Code
+        working-directory: infra
+        run: terraform fmt -check -recursive
