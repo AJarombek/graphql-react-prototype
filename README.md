@@ -25,7 +25,7 @@ export GITHUB_ACCESS_TOKEN=xxx
 touch .env
 echo "GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN" >> .env
 
-npm run start
+yarn start
 ```
 
 **Build Dockerfiles Locally**
@@ -82,8 +82,8 @@ docker container rm graphql-react-prototype-app
 | `jest.config.js`       | Jest unit testing configuration for the React app.                     |
 | `nginx.conf`           | Nginx web server configuration.                                        |
 | `package.json`         | Entry point for the npm application.  Contains dependency definitions. |
-| `package-lock.json`    | Where npm stores the versions of each dependency.                      |
 | `webpack.config.js`    | Webpack bundler configuration file.                                    |
+| `yarn.lock`            | Where yarn stores the versions of each dependency.                     |
 
 ### Version History
 

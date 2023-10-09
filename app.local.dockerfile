@@ -10,7 +10,7 @@ WORKDIR app
 RUN touch /app/.env \
     && echo "GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN" >> /app/.env
 
-RUN npm run build
+RUN yarn build
 
 FROM nginx AS host
 

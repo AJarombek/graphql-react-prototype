@@ -16,11 +16,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Initialize NPM
-        run: npm install
+      - name: Initialize Yarn
+        run: yarn
 
       - name: Format JavaScript Code
-        run: npm run format:write
+        run: yarn format:write
 
       - name: Format Terraform Code
         working-directory: infra

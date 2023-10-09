@@ -17,6 +17,7 @@ module.exports = {
     app: path.join(__dirname, 'src/index.js'),
     styles: path.join(__dirname, 'src/index.less')
   },
+  mode: "production",
   module: {
     rules: [
       {
@@ -50,13 +51,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|svg|gif)$/,
-        use: {
-          loader: 'url-loader',
-          options: {
-            limit: 15000,
-            name: '[name].[ext]'
-          }
-        }
+        type: 'asset/inline'
       }
     ]
   },
