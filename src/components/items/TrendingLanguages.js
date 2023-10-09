@@ -35,23 +35,21 @@ const TrendingLanguages = () => {
 
   return (
     <div className="items trending-languages">
-      {error
-        ? (
-          <div className="error">
-            <h6>{error}</h6>
-          </div>
-        )
-        : (
-          <>
-            <h2>Trending Languages</h2>
-            { trendingLanguages.map((language) => (
-              <div className="language" key={language.name}>
-                <p>{language.name}</p>
-                <p>{language.occurrences}</p>
-              </div>
-            ))}
-          </>
-        )}
+      {error ? (
+        <div className="error">
+          <h6>{error}</h6>
+        </div>
+      ) : (
+        <>
+          <h2>Trending Languages</h2>
+          {trendingLanguages.map((language) => (
+            <div className="language" key={language.name}>
+              <p>{language.name}</p>
+              <p>{language.occurrences}</p>
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };

@@ -59,25 +59,19 @@ const TopLanguage = () => {
 
   return (
     <div className="items top-language">
-      {error
-        ? (
-          <div className="error">
-            <h6>{error}</h6>
-          </div>
-        )
-        : (
-          <>
-            <p>Most Popular Programming Language</p>
-            <h2>{topLanguage}</h2>
-            <p>
-              Top language in
-              {' '}
-              <b>{topLanguageCount}</b>
-              {' '}
-              repositories.
-            </p>
-          </>
-        )}
+      {error ? (
+        <div className="error">
+          <h6>{error}</h6>
+        </div>
+      ) : (
+        <>
+          <p>Most Popular Programming Language</p>
+          <h2>{topLanguage}</h2>
+          <p>
+            Top language in <b>{topLanguageCount}</b> repositories.
+          </p>
+        </>
+      )}
     </div>
   );
 };

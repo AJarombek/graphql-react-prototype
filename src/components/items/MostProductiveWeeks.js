@@ -37,9 +37,7 @@ const MostProductiveWeeks = () => {
       const result = await getWeeklyContributionCounts('AJarombek');
 
       if (result.data.data) {
-        calculateMostProductiveWeeks(
-          result.data.data.user.contributionsCollection.contributionCalendar.weeks,
-        );
+        calculateMostProductiveWeeks(result.data.data.user.contributionsCollection.contributionCalendar.weeks);
       } else {
         setError(result.data.errors[0].message);
       }
@@ -50,27 +48,21 @@ const MostProductiveWeeks = () => {
 
   return (
     <div className="items most-productive-weeks">
-      {error
-        ? (
-          <div className="error">
-            <h6>{error}</h6>
-          </div>
-        )
-        : (
-          <>
-            <h2>Most Productive Weeks</h2>
-            { weeklyContributions.map((week) => (
-              <div className="week" key={week.date}>
-                <p>{week.date}</p>
-                <p>
-                  {week.contributions}
-                  {' '}
-                  Commits
-                </p>
-              </div>
-            ))}
-          </>
-        )}
+      {error ? (
+        <div className="error">
+          <h6>{error}</h6>
+        </div>
+      ) : (
+        <>
+          <h2>Most Productive Weeks</h2>
+          {weeklyContributions.map((week) => (
+            <div className="week" key={week.date}>
+              <p>{week.date}</p>
+              <p>{week.contributions} Commits</p>
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };

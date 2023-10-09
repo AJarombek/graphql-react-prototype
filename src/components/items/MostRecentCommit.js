@@ -45,23 +45,21 @@ const MostRecentCommit = () => {
 
   return (
     <div className="items most-recent-commit">
-      {error
-        ? (
-          <div className="error">
-            <h6>{error}</h6>
-          </div>
-        )
-        : (
-          <>
-            <h2>Most Recently Committed</h2>
-            {reposByDate.map((repository) => (
-              <div className="commit" key={repository.name}>
-                <p>{repository.name}</p>
-                <p>{repository.lastCommitDate.format('MMM Do, YYYY h:mm A')}</p>
-              </div>
-            ))}
-          </>
-        )}
+      {error ? (
+        <div className="error">
+          <h6>{error}</h6>
+        </div>
+      ) : (
+        <>
+          <h2>Most Recently Committed</h2>
+          {reposByDate.map((repository) => (
+            <div className="commit" key={repository.name}>
+              <p>{repository.name}</p>
+              <p>{repository.lastCommitDate.format('MMM Do, YYYY h:mm A')}</p>
+            </div>
+          ))}
+        </>
+      )}
     </div>
   );
 };
